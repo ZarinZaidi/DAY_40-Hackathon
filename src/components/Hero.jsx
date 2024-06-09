@@ -1,8 +1,8 @@
 import "./Header.css";
-import Main1 from "../img/header/home-img-1.jpg";
-import Main2 from "../img/header/home-img-2.jpg";
-import Main3 from "../img/header/home-img-3.jpg";
-import Main4 from "../img/header/home-img-4.jpg";
+// import Main1 from "../img/header/home-img-1.jpg";
+// import Main2 from "../img/header/home-img-2.jpg";
+// import Main3 from "../img/header/home-img-3.jpg";
+// import Main4 from "../img/header/home-img-4.jpg";
 import { Link } from "react-router-dom";
 
 function Hero() {
@@ -11,7 +11,7 @@ function Hero() {
             <div className="home-container">
                 <div className="container">
                     <div className="grid-container">
-                        <div className="featured grid-one">
+                        {/* <div className="featured grid-one">
                             <Link to="categories/furnitures">
                                 <div id="img1" className="lil-overlay"></div>
                                 <img src={Main1} alt="img1" />
@@ -38,7 +38,7 @@ function Hero() {
                                 <img src={Main4} alt="img4" />
                                 <p className="main-description">Electronics</p>
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
