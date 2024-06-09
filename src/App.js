@@ -2,6 +2,8 @@ import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
+import Login from './pages/Login'; // Import the Login component
+import Register from './pages/Register'; // Import the Register component
 // import All from "./components/Categories-pages/All";
 // import Furnitures from "./components/Categories-pages/Furnitures";
 // import Electronics from "./components/Categories-pages/Electronics";
@@ -49,6 +51,8 @@ function App() {
           <Route path="skin-care" element={<SkinCare />} /> */}
                 </Route>
                 <Route path="categories/product/:id" element={<ProductPage />} />
+                <Route path="/login" element={<Login />} /> 
+                <Route path="/register" element={<Register />} /> {/* Add this line */}
             </Routes>
         </CartContext.Provider>
     );
