@@ -20,7 +20,7 @@ function CategoriesHeader() {
                         <h3>{btnName}</h3>
                     </div>
                     <div className="filter-btns">
-                        <Link to="all" onClick={() => handleBtnName("all")}>
+                        {/* <Link to="all" onClick={() => handleBtnName("all")}>
                             <button>All</button>
                         </Link>
                         <Link to="furnitures">
@@ -46,7 +46,7 @@ function CategoriesHeader() {
                             <button onClick={() => handleBtnName("skin care")}>
                                 Skin Care
                             </button>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
