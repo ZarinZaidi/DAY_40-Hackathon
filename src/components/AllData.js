@@ -17,7 +17,7 @@ import Img16 from "../img/products/16.jpg";
 import Img17 from "../img/products/17.png";
 import Img18 from "../img/products/18.png";
 import Img19 from "../img/products/19.jpg";
-import Img20 from "../img/products/20r.jpg";
+import Img21 from "../img/products/21.jpg";
 import OtherImgs1 from "../img/products/otherProducts/other1.jpg";
 import OtherImgs2 from "../img/products/otherProducts/other2.jpg";
 import Toster1 from "../img/products/otherProducts/toster1.jpg";
@@ -310,7 +310,7 @@ export const items = [
   {
     id: 20,
     category: "skin-care",
-    img: Img20,
+    img: Img21,
     description: "Body Oil 50ml",
     price: 45,
     otherImgs: [BodyOil1, BodyOil2],
