@@ -66,6 +66,7 @@ function ProductPage() {
                   src={item[0].img}
                   alt="product"
                 />
+                {/* add new line */}
                 <img
                   onMouseOver={changeImage}
                   src={item[0].otherImgs[0]}
