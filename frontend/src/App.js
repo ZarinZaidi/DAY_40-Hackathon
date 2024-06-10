@@ -1,60 +1,56 @@
-import Navbar from "./components/Navbar";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Categories from "./pages/Categories";
-import Login from './pages/Login'; // Import the Login component
-import Register from './pages/Register'; // Import the Register component
-// import All from "./components/Categories-pages/All";
-// import Furnitures from "./components/Categories-pages/Furnitures";
-// import Electronics from "./components/Categories-pages/Electronics";
-// import Lamps from "./components/Categories-pages/Lamps";
-// import Kitchen from "./components/Categories-pages/Kitchen";
-// import Chairs from "./components/Categories-pages/Chairs";
-// import SkinCare from "./components/Categories-pages/SkinCare";
-import ProductPage, { CartContext } from "./pages/ProductPage";
-import { useEffect, useState } from "react";
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
+import Navbar from 'react-bootstrap/Navbar';
+import Badge from 'react-bootstrap/Badge';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import { LinkContainer } from 'react-router-bootstrap';
+import { useContext } from 'react';
+import { Store } from './Store';
+import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
-    const [cartItem, setCartItem] = useState([]);
-
-    const addToCart = (item) => {
-        setCartItem([...cartItem, item]);
-    };
-
-    // local storage
-    useEffect(() => {
-        const json = localStorage.getItem("cartItem");
-        const savedCart = JSON.parse(json);
-        if (savedCart) {
-            setCartItem(savedCart);
-        }
-    }, []);
-
-    useEffect(() => {
-        const json = JSON.stringify(cartItem);
-        localStorage.setItem("cartItem", json);
-    }, [cartItem]);
-
+    const { state } = useContext(Store);
+    const { cart } = state;
     return (
-        <CartContext.Provider value={{ cartItem, addToCart, setCartItem }}>
-            <Navbar />
-            <Routes>
-                <Route index path="/" element={<Home />} />
-
-                <Route path="categories" element={<Categories />}>
-                    {/* <Route path="all" element={<All />} />
-          <Route path="furnitures" element={<Furnitures />} />
-          <Route path="electronics" element={<Electronics />} />
-          <Route path="lamps" element={<Lamps />} />
-          <Route path="kitchen" element={<Kitchen />} />
-          <Route path="chairs" element={<Chairs />} />
-          <Route path="skin-care" element={<SkinCare />} /> */}
-                </Route>
-                <Route path="categories/product/:id" element={<ProductPage />} />
-                <Route path="/login" element={<Login />} /> 
-                <Route path="/register" element={<Register />} /> {/* Add this line */}
-            </Routes>
-        </CartContext.Provider>
+        <BrowserRouter>
+            <div className="d-flex flex-column site-container">
+                <header>
+                    <Navbar bg="dark" variant="dark">
+                        <Container>
+                            <LinkContainer to="/">
+                                <Navbar.Brand>hackashop</Navbar.Brand>
+                            </LinkContainer>
+                            <Nav className="me-auto">
+                                <Link to="/cart" className="nav-link">
+                                    Cart
+                                    {cart.cartItems.length > 0 && (
+                                        <Badge pill bg="danger">
+                                            {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                                        </Badge>
+                                    )}
+                                </Link>
+                            </Nav>
+                        </Container>
+                    </Navbar>
+                </header>
+                <main>
+                    <Container className="mt-3">
+                        <Routes>
+                            <Route path="/product/:slug" element={<ProductScreen />} />
+                            <Route path="/cart" element={<CartScreen />} />
+                            <Route path="/signin" element={<SigninScreen />} />
+                            <Route path="/" element={<HomeScreen />} />
+                        </Routes>
+                    </Container>
+                </main>
+                <footer>
+                    <div className="text-center">All rights reserved</div>
+                </footer>
+            </div>
+        </BrowserRouter>
     );
 }
 

@@ -1,24 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@200;400;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Blinker', sans-serif;
-    position: relative;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-    font-size: 62.5%;
+.site-container {
+    min-height: 100vh;
 }
 
-/* global */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 19px;
+main {
+    flex: 1;
+}
+
+.btn-primary {
+    background-color: #f0c040;
+    color: #000000;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.rating span {
+    color: #ffc000;
+}
+
+.product {
+    border: 1px #404040 solid;
+    margin: 1rem;
+}
+
+.product img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.product-info {
+    padding: 1rem;
+}
+
+.img-large {
+    max-width: 100%;
+}
+
+.img-thumbnail {
+    height: 80px;
+}
+
+.small-container {
+    max-width: 600px;
 }
