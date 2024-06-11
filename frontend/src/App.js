@@ -22,6 +22,8 @@ import ProfileScreen from './screens/ProfileScreen';
 import CatScreen from './screens/CatScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import AllProdScreen from './screens/AllProdScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
+
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -39,11 +41,22 @@ function App() {
       <div className="d-flex flex-column site-container">
         <ToastContainer position="bottom-center" limit={1} />
         <header>
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg="primary" data-bs-theme="dark">
             <Container>
               <LinkContainer to="/">
-                <Navbar.Brand>hackashop</Navbar.Brand>
+              <Navbar.Brand>
+                  <img
+                    src="/silhouette.png" //logo from hhttps://www.flaticon.com/free-icon/silhouette_12768167?term=fashion+logo&page=1&position=11&origin=search&related_id=12768167
+                    alt="Hackashop Logo"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                  />{' '}
+                  hackashop
+                </Navbar.Brand>
               </LinkContainer>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Link to="/categories/all-products" className="nav-link">
                   Products
@@ -69,7 +82,7 @@ function App() {
                       className="dropdown-item"
                       to="#signout"
                       onClick={signoutHandler}
-                    >
+                      >
                       Sign Out
                     </Link>
                   </NavDropdown>
@@ -79,6 +92,8 @@ function App() {
                   </Link>
                 )}
               </Nav>
+              </Navbar.Collapse>
+              
             </Container>
           </Navbar>
         </header>
@@ -102,6 +117,7 @@ function App() {
                 <Route path=":category" element={<CategoryScreen />} />
                 <Route path="all-products" element={<AllProdScreen />} />
               </Route>
+              <Route path="/orderhistory" element={<OrderHistoryScreen />}/>
             </Routes>
           </Container>
         </main>
