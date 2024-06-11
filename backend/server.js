@@ -1,7 +1,12 @@
 import express from 'express';
 import data from './data.js';
+import userRouter from './routes/userRoutes.js';
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // test
 app.get('/api/products', (req, res) => {
     res.send(data.products);
@@ -21,6 +26,13 @@ app.get('/api/products/:id', (req, res) => {
     } else {
         res.status(404).send({ message: 'Product Not Found' });
     }
+});
+
+//users api
+app.use('/api/users', userRouter);
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
 
 const port = process.env.PORT || 5000;
