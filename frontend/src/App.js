@@ -45,7 +45,7 @@ function App() {
                 <Navbar.Brand>hackashop</Navbar.Brand>
               </LinkContainer>
               <Nav className="me-auto">
-                <Link to="/categories" className="nav-link">
+                <Link to="/categories/all-products" className="nav-link">
                   Products
                 </Link>
                 <Link to="/cart" className="nav-link">
