@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import axios from 'axios';
-import { Form, Button, Row, Col, Alert, Container } from 'react-bootstrap';
-import './CatScreen.css';
+import React, { useState, useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
+import axios from "axios";
+import { Form, Button, Row, Col, Alert, Container } from "react-bootstrap";
+import "./CatScreen.css";
 
 function CatScreen() {
   const [categories, setCategories] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [error, setError] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get('/api/products');
+        const { data } = await axios.get("/api/products");
         const categories = [
           ...new Set(data.map((product) => product.category)),
         ];
         setCategories(categories);
       } catch (error) {
-        setError('Failed to fetch categories. Please try again later.');
+        setError("Failed to fetch categories. Please try again later.");
       }
     };
     fetchCategories();
@@ -34,7 +34,7 @@ function CatScreen() {
       );
       setFilteredProducts(filtered);
     } catch (error) {
-      setError('Failed to fetch products. Please try again later.');
+      setError("Failed to fetch products. Please try again later.");
     }
   };
 
@@ -66,7 +66,7 @@ function CatScreen() {
         </Form>
         <Row className="justify-content-center">
           <Col xs="auto" className="pe-2">
-            <Link to="/categories">
+            <Link to={`/categories/all-products`}>
               <Button className="custom-button">All</Button>
             </Link>
           </Col>

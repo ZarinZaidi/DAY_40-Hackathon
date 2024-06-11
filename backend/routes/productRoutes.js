@@ -3,7 +3,7 @@ import Product from '../models/productModel.js';
 
 const productRouter = express.Router();
 
-// Get all products
+// Get all products - home
 productRouter.get('/', async (req, res) => {
     const products = await Product.find();
     res.send(products);
@@ -48,5 +48,10 @@ productRouter.get('/categories', async (req, res) => {
     res.send(categories);
 });
 
+// Get all products - categories
+productRouter.get('/categories/all-products', async (req, res) => {
+    const products = await Product.find();
+    res.send(products);
+});
 
 export default productRouter;
