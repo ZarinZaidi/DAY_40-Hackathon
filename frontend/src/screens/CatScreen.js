@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Row, Col, Alert, Container } from "react-bootstrap";
+import FilteredProducts from '../components/FilteredProducts';
 import "./CatScreen.css";
 
 function CatScreen() {
@@ -9,6 +10,9 @@ function CatScreen() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
+  
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -25,6 +29,11 @@ function CatScreen() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    // To clear filtered products on route change
+    setFilteredProducts([]);
+  }, [location]);
+
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
@@ -36,6 +45,11 @@ function CatScreen() {
     } catch (error) {
       setError("Failed to fetch products. Please try again later.");
     }
+  };
+
+  const handleNavigation = (path) => {
+    setFilteredProducts([]); // Clear filtered products
+    navigate(path);
   };
 
   return (
@@ -79,7 +93,11 @@ function CatScreen() {
           ))}
         </Row>
         <Row className="justify-content-center mt-3">
-          <Outlet />
+          {filteredProducts.length > 0 ? (
+            <FilteredProducts products={filteredProducts} />
+          ) : (
+            <Outlet />
+          )}
         </Row>
       </div>
     </Container>
