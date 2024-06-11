@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Form, Button, Row, Col, Alert, Container } from 'react-bootstrap';
 import './CatScreen.css';
 
-const CatScreen = () => {
+function CatScreen() {
   const [categories, setCategories] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');

@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ListGroup, ListGroupItem, Alert, Button } from "react-bootstrap";
 
-const CategoryScreen = () => {
+function CategoryScreen() {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
