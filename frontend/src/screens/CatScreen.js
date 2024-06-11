@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Row, Col, Alert, Container } from "react-bootstrap";
-import FilteredProducts from '../components/FilteredProducts';
+import FilteredProducts from "../components/FilteredProducts";
 import "./CatScreen.css";
 
 function CatScreen() {
@@ -11,7 +11,7 @@ function CatScreen() {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
   const [noProductsFound, setNoProductsFound] = useState(false);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,7 +33,7 @@ function CatScreen() {
   useEffect(() => {
     // To clear filtered products on route change
     setFilteredProducts([]);
-    setNoProductsFound(false); 
+    setNoProductsFound(false);
   }, [location]);
 
   const handleSearch = async (e) => {
@@ -58,14 +58,24 @@ function CatScreen() {
   return (
     <Container>
       <Link to="/" className="btn btn-secondary mb-2">
-        Back to Home
+      &lt; Home
       </Link>
       <div className="text-center">
-        <h1>All Products</h1>
+        <h1 className="mb-4">All Products</h1>
         {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSearch} className="mb-3">
-          <Row className="justify-content-center">
-            <Col xs="auto">
+        <Row className="justify-content-between align-items-center mb-3">
+          <Col className="d-flex flex-wrap">
+            <Link to={`/categories/all-products`}>
+              <Button className="custom-button me-2">All</Button>
+            </Link>
+            {categories.map((category) => (
+              <Link to={`/categories/${category}`} key={category}>
+                <Button className="custom-button me-2">{category}</Button>
+              </Link>
+            ))}
+          </Col>
+          <Col className="d-flex justify-content-end">
+            <Form onSubmit={handleSearch} className="d-flex">
               <Form.Control
                 type="text"
                 placeholder="Search products..."
@@ -73,28 +83,13 @@ function CatScreen() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="me-2"
               />
-            </Col>
-            <Col xs="auto">
-              <Button variant="primary" type="submit">
+              <Button variant="dark" type="submit">
                 Search
               </Button>
-            </Col>
-          </Row>
-        </Form>
-        <Row className="justify-content-center">
-          <Col xs="auto" className="pe-2">
-            <Link to={`/categories/all-products`}>
-              <Button className="custom-button">All</Button>
-            </Link>
+            </Form>
           </Col>
-          {categories.map((category) => (
-            <Col key={category} xs="auto" className="pe-2">
-              <Link to={`/categories/${category}`}>
-                <Button className="custom-button">{category}</Button>
-              </Link>
-            </Col>
-          ))}
         </Row>
+       
         <Row className="justify-content-center mt-3">
           {filteredProducts.length > 0 ? (
             <FilteredProducts products={filteredProducts} />
@@ -107,6 +102,6 @@ function CatScreen() {
       </div>
     </Container>
   );
-};
+}
 
 export default CatScreen;
