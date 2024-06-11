@@ -24,7 +24,6 @@ const CategoryScreen = () => {
 
   return (
     <div>
-      <h1>{category}</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       <Row className="flex-wrap">
         {products.map((product) => (
@@ -45,9 +44,6 @@ const CategoryScreen = () => {
           </Col>
         ))}
       </Row>
-
-      <Button as={Link} to="/categories" variant="primary">Go Back</Button>
-
     </div>
   );
 };

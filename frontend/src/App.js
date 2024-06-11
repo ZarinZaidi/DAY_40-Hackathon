@@ -86,8 +86,9 @@ function App() {
               <Route path="/signup" element={<SignupScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/" element={<HomeScreen />} />
-              <Route path="/categories" element={<CatScreen />} />
-              <Route path="/product/category/:category" element={<CategoryScreen />} />
+              <Route path="/categories/*" element={<CatScreen />}>
+                <Route path=":category" element={<CategoryScreen />} />
+              </Route>
             </Routes>
           </Container>
         </main>
