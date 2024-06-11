@@ -13,6 +13,7 @@ import { useContext } from "react";
 import { Store } from "./Store";
 import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SigninScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import CatScreen from "./screens/CatScreen";
 import CategoryScreen from "./screens/CategoryScreen";
 import SignupScreen from './screens/SignupScreen';
@@ -22,8 +23,11 @@ function App() {
   const { cart, userInfo } = state;
 
   const signoutHandler = () => {
-    ctxDispatch({ type: 'USER_SIGNOUT' });
-    localStorage.removeItem('userInfo');
+    ctxDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("paymentMethod");
+    window.location.href = "/signin";
   };
   return (
     <BrowserRouter>
@@ -80,6 +84,7 @@ function App() {
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/" element={<HomeScreen />} />
               <Route path="/categories" element={<CatScreen />} />
               <Route path="/product/category/:category" element={<CategoryScreen />} />
