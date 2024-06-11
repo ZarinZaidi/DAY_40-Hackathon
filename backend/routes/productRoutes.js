@@ -48,7 +48,7 @@ productRouter.get('/categories', async (req, res) => {
     res.send(categories);
 });
 
-// Get all products - categories
+// Get all products for 'all' categories
 productRouter.get('/categories/all-products', async (req, res) => {
     const products = await Product.find();
     res.send(products);
