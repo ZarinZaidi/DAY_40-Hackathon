@@ -10,6 +10,7 @@ function CatScreen() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
+  const [noProductsFound, setNoProductsFound] = useState(false);
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +33,7 @@ function CatScreen() {
   useEffect(() => {
     // To clear filtered products on route change
     setFilteredProducts([]);
+    setNoProductsFound(false); 
   }, [location]);
 
   const handleSearch = async (e) => {
@@ -42,6 +44,7 @@ function CatScreen() {
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredProducts(filtered);
+      setNoProductsFound(filtered.length === 0); // Set noProductsFound to true if filtered products are empty
     } catch (error) {
       setError("Failed to fetch products. Please try again later.");
     }
@@ -95,6 +98,8 @@ function CatScreen() {
         <Row className="justify-content-center mt-3">
           {filteredProducts.length > 0 ? (
             <FilteredProducts products={filteredProducts} />
+          ) : noProductsFound ? (
+            <div>No products found for your search.</div>
           ) : (
             <Outlet />
           )}
