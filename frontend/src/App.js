@@ -21,6 +21,7 @@ import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import CatScreen from './screens/CatScreen';
 import CategoryScreen from './screens/CategoryScreen';
+import AllProdScreen from './screens/AllProdScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -99,6 +100,7 @@ function App() {
               <Route path="/" element={<HomeScreen />} />
               <Route path="/categories/*" element={<CatScreen />}>
                 <Route path=":category" element={<CategoryScreen />} />
+                <Route path="all-products" element={<AllProdScreen />} />
               </Route>
             </Routes>
           </Container>
