@@ -1,0 +1,26 @@
+.custom-button {
+    color: black;
+    background-color: white;
+    border: 1px solid gray;
+  }
+  
+  .custom-button:hover {
+    background-color: rgb(230, 90, 71);
+  }
+  
+  .search-input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input-container .form-control {
+    border-radius: 20px 0 0 20px;
+    border-right: none;
+    
+    width: 30px;
+  }
+  
+  .search-input-container .btn {
+    border-radius: 0 20px 20px 0;
+  }
+  
