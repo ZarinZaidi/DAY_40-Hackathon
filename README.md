@@ -1,5 +1,7 @@
 # Hackashop E-commerce Platform
 
+Live Demo: https://hackashop-1e4e7bb215b9.herokuapp.com
+
 ## Overview
 
 Hackashop is a full-featured e-commerce platform built with the MERN (MongoDB, Express, React, Node.js) stack. This project allows users to browse products, search for products, view product details, add products to their cart, and proceed through the checkout process.
